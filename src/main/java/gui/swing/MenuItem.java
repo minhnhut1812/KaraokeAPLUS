@@ -3,6 +3,8 @@ package gui.swing;
 import gui.event.EventMenu;
 import gui.event.EventMenuSelect;
 import gui.model.ModelMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -11,13 +13,9 @@ import net.miginfocom.swing.MigLayout;
  */
 public class MenuItem extends javax.swing.JPanel {
 
-
-
     public void setAlpha(float alpha) {
         this.alpha = alpha;
     }
-
-  
 
     public boolean isOpen() {
         return open;
@@ -39,8 +37,6 @@ public class MenuItem extends javax.swing.JPanel {
         return index;
     }
 
-    
-
     private float alpha;
 
     public void setMenu(ModelMenu menu) {
@@ -51,13 +47,36 @@ public class MenuItem extends javax.swing.JPanel {
     private EventMenuSelect eventSelected;
     private int index;
 
-    public MenuItem(ModelMenu menu,EventMenu event, EventMenuSelect eventSelected, int index) {
+    public MenuItem(ModelMenu menu, EventMenu event, EventMenuSelect eventSelected, int index) {
         initComponents();
         this.menu = menu;
         this.eventSelected = eventSelected;
         this.index = index;
         setOpaque(false);
-        setLayout(new MigLayout("wrap, fill, insets 0", "[fill]","[fill,40!]0[fill, 35!]"));
+        setLayout(new MigLayout("wrap, fill, insets 0", "[fill]", "[fill,40!]0[fill, 35!]"));
+        MenuButton firstItem = new MenuButton(menu.getIcon(), menu.getMenuName());
+        firstItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               if(menu.getSubMenu().length > 0){
+                   System.out.println("click first item ");
+                   
+               }
+            }
+        });
+        add(firstItem);
+        int subMenuIndex = -1;
+        for (String st : menu.getSubMenu()){
+           MenuButton item = new MenuButton(st);
+           item.setIndex(++subMenuIndex);
+           item.addActionListener(new ActionListener() {
+               @Override
+               public void actionPerformed(ActionEvent e) {
+                   eventSelected.menuSelect(index, item.getIndex());
+               }
+           });
+            add(item);
+        }
         
     }
 

@@ -23,7 +23,7 @@ private MigLayout layout;
      private void init() {
        layout = new MigLayout("fill", "0[]0[100%, fill]0","0[fill, top]0");
       bg.setLayout(layout);
-      menu = new Menu();
+      menu = new Menu(null);
       header = new Header();
       main = new MainForm();
       bg.add(menu,"w 200!, spany2");
