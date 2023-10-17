@@ -1,8 +1,8 @@
-
 package gui.main;
 
 import gui.component.Header;
 import gui.component.Menu;
+import gui.event.EventMenuSelect;
 import gui.form.MainForm;
 import net.miginfocom.swing.MigLayout;
 
@@ -11,25 +11,35 @@ import net.miginfocom.swing.MigLayout;
  * @author HO MINH HAU
  */
 public class Main extends javax.swing.JFrame {
-private MigLayout layout;
-   private Menu menu;
-   private Header header;
-   private MainForm main;
+
+    private MigLayout layout;
+    private Menu menu;
+    private Header header;
+    private MainForm main;
+
     public Main() {
         initComponents();
         init();
     }
 
-     private void init() {
-       layout = new MigLayout("fill", "0[]0[100%, fill]0","0[fill, top]0");
-      bg.setLayout(layout);
-      menu = new Menu(null);
-      header = new Header();
-      main = new MainForm();
-      bg.add(menu,"w 200!, spany2");
-      bg.add(header, "h 40!, wrap");
-      bg.add(main,"w 100% , h 100%");
+    private void init() {
+        layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
+        bg.setLayout(layout);
+        menu = new Menu();
+        header = new Header();
+        main = new MainForm();
+        menu.addEvent(new EventMenuSelect() {
+            @Override
+            public void menuSelect(int menuIndex, int subMenuIndex) {
+                System.out.println("Menu Index:" + menuIndex + "SubMenuIndex:" + subMenuIndex);
+            }
+        });
+        menu.initMenuItem();
+        bg.add(menu, "w 200!, spany2");
+        bg.add(header, "h 40!, wrap");
+        bg.add(main, "w 100% , h 100%");
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -97,6 +107,7 @@ private MigLayout layout;
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Main().setVisible(true);
             }

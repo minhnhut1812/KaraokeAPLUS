@@ -11,9 +11,8 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.ImageIcon;
 import net.miginfocom.swing.MigLayout;
-import org.jdesktop.animation.timing.Animator;
-import org.jdesktop.animation.timing.TimingTarget;
 
 /**
  *
@@ -25,16 +24,8 @@ public class Menu extends javax.swing.JPanel {
         this.event = event;
     }
 
-    public boolean isEnbleMenu() {
-        return enbleMenu;
-    }
-
     public void setEnbleMenu(boolean enbleMenu) {
         this.enbleMenu = enbleMenu;
-    }
-
-    public boolean isShowMenu() {
-        return showMenu;
     }
 
     public void setShowMenu(boolean showMenu) {
@@ -42,7 +33,6 @@ public class Menu extends javax.swing.JPanel {
     }
 
     private final MigLayout layout;
-    private final Animator animator = null;
     private EventMenuSelect event;
     private boolean enbleMenu = true;
     private boolean showMenu = true;
@@ -53,23 +43,24 @@ public class Menu extends javax.swing.JPanel {
         setOpaque(false);
         scrollPanel.getViewport().setOpaque(false);
         scrollPanel.setVerticalScrollBar(new ScrollBarCustom());
-        layout = new MigLayout("wrp, filx, insets 0", "[fill]", "[]0[]");
+        layout = new MigLayout("wrap, fillx, insets 0", "[fill]", "[]0[]");
         panel.setLayout(layout);
 
     }
-    public void initMenuItem(){
-        
+
+    public void initMenuItem() {
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/home.png")), "   Trang Chủ"));
     }
 
     private void addMenu(ModelMenu menu) {
-        panel.add(new MenuItem(menu, getEventMenu(), event, panel.getComponentCount()));
+        panel.add(new MenuItem(menu, getEventMenu(), event, panel.getComponentCount()), "h 40!");
     }
 
     private EventMenu getEventMenu() {
         return new EventMenu() {
             @Override
             public boolean menuPressed(Component com, boolean open) {
-                System.out.println(".menuPressed()");
+                System.out.println("menuPressed");
                 return true;
             }
         };
@@ -128,8 +119,8 @@ public class Menu extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 77, Short.MAX_VALUE)
-                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addComponent(scrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
