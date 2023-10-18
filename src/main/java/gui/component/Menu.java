@@ -32,7 +32,6 @@ public class Menu extends javax.swing.JPanel {
         this.showMenu = showMenu;
     }
 
-    private final MigLayout layout;
     private EventMenuSelect event;
     private boolean enbleMenu = true;
     private boolean showMenu = true;
@@ -40,20 +39,28 @@ public class Menu extends javax.swing.JPanel {
     public Menu() {
         initComponents();
         setOpaque(false);
-        setOpaque(false);
-        scrollPanel.getViewport().setOpaque(false);
-        scrollPanel.setVerticalScrollBar(new ScrollBarCustom());
-        layout = new MigLayout("wrap, fillx, insets 0", "[fill]", "[]0[]");
-        panel.setLayout(layout);
-
+        panelItem.setLayout(new MigLayout("wrap, fillx, insets 0", "[fill]", "[]0[]"));
+        panelSetting.setLayout(new MigLayout("wrap, fillx, insets 0", "[fill]", "[]0[]"));
     }
 
     public void initMenuItem() {
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/home.png")), "   Trang Chủ"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/TrangChu1.png")), "   Trang Chủ"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyDatPhong.png")), "   Quản Lí Đặt Phòng"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyPhongHat2.png")), "   Quản Lí Phòng Hát"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyKhachHang.png")), "   Quản Lí Khách Hàng"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyMatHang.png")), "   Quản Lí Mặt Hàng", "Mặt Hàng", "Dịch Vụ"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/teamwork.png")), "   Quản Lí Nhân Viên "));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/bar-chart.png")), "   Thống Kê"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/settings.png")), "   Cài Đặt", "Trợ Giúp", "Đổi Mật Khẩu", "Đăng Xuất"));
+
     }
 
     private void addMenu(ModelMenu menu) {
-        panel.add(new MenuItem(menu, getEventMenu(), event, panel.getComponentCount()), "h 40!");
+        if (menu.getMenuName().equals("   Cài Đặt")) {
+            panelSetting.add(new MenuItem(menu, getEventMenu(), event, panelSetting.getComponentCount()), "h 30!, pushy, growy");
+        } else {
+            panelItem.add(new MenuItem(menu, getEventMenu(), event, panelItem.getComponentCount()), "h 60!");
+        }
     }
 
     private EventMenu getEventMenu() {
@@ -71,8 +78,8 @@ public class Menu extends javax.swing.JPanel {
     private void initComponents() {
 
         Menu = new javax.swing.JPanel();
-        scrollPanel = new javax.swing.JScrollPane();
-        panel = new javax.swing.JPanel();
+        panelItem = new javax.swing.JPanel();
+        panelSetting = new javax.swing.JPanel();
 
         Menu.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -88,39 +95,52 @@ public class Menu extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(190, 680));
 
-        scrollPanel.setBackground(new java.awt.Color(255, 255, 255));
-        scrollPanel.setBorder(null);
-        scrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPanel.setOpaque(false);
+        panelItem.setBackground(new java.awt.Color(255, 255, 255));
+        panelItem.setOpaque(false);
+        panelItem.setPreferredSize(new java.awt.Dimension(190, 535));
 
-        panel.setBackground(new java.awt.Color(255, 255, 255));
-        panel.setOpaque(false);
-
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelItemLayout = new javax.swing.GroupLayout(panelItem);
+        panelItem.setLayout(panelItemLayout);
+        panelItemLayout.setHorizontalGroup(
+            panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 192, Short.MAX_VALUE)
         );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+        panelItemLayout.setVerticalGroup(
+            panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 535, Short.MAX_VALUE)
         );
 
-        scrollPanel.setViewportView(panel);
+        panelSetting.setBackground(new java.awt.Color(255, 255, 255));
+        panelSetting.setOpaque(false);
+        panelSetting.setPreferredSize(new java.awt.Dimension(190, 100));
+
+        javax.swing.GroupLayout panelSettingLayout = new javax.swing.GroupLayout(panelSetting);
+        panelSetting.setLayout(panelSettingLayout);
+        panelSettingLayout.setHorizontalGroup(
+            panelSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelSettingLayout.setVerticalGroup(
+            panelSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPanel)
+            .addComponent(panelItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(scrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(panelItem, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelSetting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,10 +157,9 @@ public class Menu extends javax.swing.JPanel {
         super.paintComponent(g);
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
-    private javax.swing.JPanel panel;
-    private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JPanel panelItem;
+    private javax.swing.JPanel panelSetting;
     // End of variables declaration//GEN-END:variables
 }
