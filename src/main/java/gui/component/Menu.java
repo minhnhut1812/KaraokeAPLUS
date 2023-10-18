@@ -1,10 +1,9 @@
 package gui.component;
 
 import gui.event.EventMenu;
-import gui.event.EventMenuSelect;
 import gui.model.ModelMenu;
+import gui.swing.MenuAnimation;
 import gui.swing.MenuItem;
-import gui.swing.scrollbar.ScrollBarCustom;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GradientPaint;
@@ -13,6 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import net.miginfocom.swing.MigLayout;
+import gui.event.EventMenuSelected;
 
 /**
  *
@@ -20,7 +20,7 @@ import net.miginfocom.swing.MigLayout;
  */
 public class Menu extends javax.swing.JPanel {
 
-    public void addEvent(EventMenuSelect event) {
+    public void addEvent(EventMenuSelected event) {
         this.event = event;
     }
 
@@ -32,34 +32,38 @@ public class Menu extends javax.swing.JPanel {
         this.showMenu = showMenu;
     }
 
-    private EventMenuSelect event;
+    private EventMenuSelected event;
     private boolean enbleMenu = true;
     private boolean showMenu = true;
+    private final MigLayout layout;
 
     public Menu() {
         initComponents();
         setOpaque(false);
-        panelItem.setLayout(new MigLayout("wrap, fillx, insets 0", "[fill]", "[]0[]"));
+                layout = new MigLayout("wrap, fillx, insets 0", "[fill]", "[]0[]");
+
+        panelItem.setLayout(layout);
         panelSetting.setLayout(new MigLayout("wrap, fillx, insets 0", "[fill]", "[]0[]"));
+        
     }
 
     public void initMenuItem() {
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/TrangChu1.png")), "   Trang Chủ"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyDatPhong.png")), "   Quản Lí Đặt Phòng"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyPhongHat2.png")), "   Quản Lí Phòng Hát"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyKhachHang.png")), "   Quản Lí Khách Hàng"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyMatHang.png")), "   Quản Lí Mặt Hàng", "Mặt Hàng", "Dịch Vụ"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/teamwork.png")), "   Quản Lí Nhân Viên "));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/bar-chart.png")), "   Thống Kê"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/settings.png")), "   Cài Đặt", "Trợ Giúp", "Đổi Mật Khẩu", "Đăng Xuất"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/TrangChu1.png")), "Trang Chủ"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/choices.png")), "Quản Lí Đặt Phòng"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/QuanLyPhongHat2.png")), "Quản Lí Phòng Hát"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/add-user.png")), "Quản Lí Khách Hàng"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/add-to-basket.png")), "Quản Lí Mặt Hàng", "     Mặt Hàng", "     Dịch Vụ"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/teamwork.png")), "Quản Lí Nhân Viên "));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/bar-chart.png")), "Thống Kê"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/icon/setting.png")), "Cài Đặt"));
 
     }
 
     private void addMenu(ModelMenu menu) {
-        if (menu.getMenuName().equals("   Cài Đặt")) {
+        if (menu.getMenuName().equals("Cài Đặt")) {
             panelSetting.add(new MenuItem(menu, getEventMenu(), event, panelSetting.getComponentCount()), "h 30!, pushy, growy");
         } else {
-            panelItem.add(new MenuItem(menu, getEventMenu(), event, panelItem.getComponentCount()), "h 60!");
+            panelItem.add(new MenuItem(menu, getEventMenu(), event, panelItem.getComponentCount()), "h 52!");
         }
     }
 
@@ -67,8 +71,19 @@ public class Menu extends javax.swing.JPanel {
         return new EventMenu() {
             @Override
             public boolean menuPressed(Component com, boolean open) {
-                System.out.println("menuPressed");
-                return true;
+                if (enbleMenu) {
+                    if (showMenu) {
+                        if (open) {
+                            new MenuAnimation(layout, com).openMenu();
+                        } else {
+                            new MenuAnimation(layout, com).closeMenu();
+                        }
+                        return true;
+                    } else {
+                        System.out.println("show pupup menu(close)");
+                    }
+                }
+                return false;
             }
         };
     }
@@ -156,6 +171,7 @@ public class Menu extends javax.swing.JPanel {
         g2.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(g);
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;

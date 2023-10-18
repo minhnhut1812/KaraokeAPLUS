@@ -2,9 +2,11 @@ package gui.main;
 
 import gui.component.Header;
 import gui.component.Menu;
-import gui.event.EventMenuSelect;
 import gui.form.MainForm;
 import net.miginfocom.swing.MigLayout;
+import gui.event.EventMenuSelected;
+import gui.form.Form_Home;
+import gui.form.Form_QuanLyDatPhong;
 
 /**
  *
@@ -28,10 +30,19 @@ public class Main extends javax.swing.JFrame {
         menu = new Menu();
         header = new Header();
         main = new MainForm();
-        menu.addEvent(new EventMenuSelect() {
+        menu.addEvent(new EventMenuSelected() {
             @Override
             public void menuSelect(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index:" + menuIndex + "SubMenuIndex:" + subMenuIndex);
+                if (menuIndex == 0) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Form_Home());
+                    } else if (menuIndex == 1) {
+                        if (subMenuIndex == -1) {
+                            main.showForm(new Form_QuanLyDatPhong());
+                        }
+                    }
+                }
             }
         });
         menu.initMenuItem();
