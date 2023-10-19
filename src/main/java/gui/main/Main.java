@@ -5,8 +5,15 @@ import gui.component.Menu;
 import gui.form.MainForm;
 import net.miginfocom.swing.MigLayout;
 import gui.event.EventMenuSelected;
+import gui.form.Form_DichVu;
 import gui.form.Form_Home;
+import gui.form.Form_MatHang;
 import gui.form.Form_QuanLyDatPhong;
+import gui.form.Form_QuanLyKhachHang;
+import gui.form.Form_QuanLyNhanVien;
+import gui.form.Form_QuanLyPhongHat;
+import gui.form.Form_Setting;
+import gui.form.Form_ThongKe;
 
 /**
  *
@@ -37,18 +44,50 @@ public class Main extends javax.swing.JFrame {
                 if (menuIndex == 0) {
                     if (subMenuIndex == -1) {
                         main.showForm(new Form_Home());
-                    } else if (menuIndex == 1) {
-                        if (subMenuIndex == -1) {
-                            main.showForm(new Form_QuanLyDatPhong());
-                        }
+                    }
+                } else if (menuIndex == 1) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Form_QuanLyDatPhong());
+                    }
+                } else if (menuIndex == 2) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Form_QuanLyPhongHat());
+                    }
+                } else if (menuIndex == 3) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Form_QuanLyKhachHang());
+                    }
+                } else if (menuIndex == 4) {
+                    if (subMenuIndex == -1 || subMenuIndex == 0) {
+                        main.showForm(new Form_MatHang());
+                    } else if (subMenuIndex == 1) {
+                        main.showForm(new Form_DichVu());
+                    }
+                }else if(menuIndex ==5){
+                    if(subMenuIndex==-1){
+                        main.showForm(new Form_QuanLyNhanVien());
+                    }
+                }else if(menuIndex ==6){
+                    if(subMenuIndex==-1){
+                        main.showForm(new Form_ThongKe());
+                    }
+                }else if(menuIndex ==7){
+                    if(subMenuIndex==-1){
+                        main.showForm(new Form_Setting());
                     }
                 }
+
             }
-        });
+        }
+        );
         menu.initMenuItem();
-        bg.add(menu, "w 200!, spany2");
-        bg.add(header, "h 40!, wrap");
-        bg.add(main, "w 100% , h 100%");
+
+        bg.add(menu,
+                "w 200!, spany2");
+        bg.add(header,
+                "h 40!, wrap");
+        bg.add(main,
+                "w 100% , h 100%");
     }
 
     @SuppressWarnings("unchecked")
@@ -103,16 +142,24 @@ public class Main extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

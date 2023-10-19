@@ -61,7 +61,8 @@ public class Menu extends javax.swing.JPanel {
 
     private void addMenu(ModelMenu menu) {
         if (menu.getMenuName().equals("Cài Đặt")) {
-            panelSetting.add(new MenuItem(menu, getEventMenu(), event, panelSetting.getComponentCount()), "h 30!, pushy, growy");
+            panelSetting.add(new MenuItem(menu, getEventMenu(), event, panelItem.getComponentCount()), "h 30!, pushy, growy");
+            
         } else {
             panelItem.add(new MenuItem(menu, getEventMenu(), event, panelItem.getComponentCount()), "h 52!");
         }
