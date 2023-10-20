@@ -14,7 +14,8 @@ gui\component\Menu.class
 gui\form\Form_MatHang.class
 gui\swing\scrollbar\ModernScrollBarUI$ScrollBarButton.class
 gui\swing\MenuItem.class
-gui\form\Form_ThongKe.class
+gui\form\Form_ThongKeDoanhThu.class
+gui\form\Form_ThongKeMatHang.class
 gui\swing\MenuButton.class
 gui\swing\MenuAnimation.class
 gui\swing\scrollbar\ScrollBarCustom.class

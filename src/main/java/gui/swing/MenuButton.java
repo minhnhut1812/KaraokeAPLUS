@@ -19,6 +19,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -52,12 +53,14 @@ public class MenuButton extends JButton {
         setIcon(icon);
         init();
         setBorder(new EmptyBorder(1, 20, 1, 1));
+         setFont(new Font("SansSerif", Font.PLAIN, 13));
     }
 
     public MenuButton(String text) {
         super(text);
         init();
         setBorder(new EmptyBorder(1, 50, 1, 1));
+//         setFont(new Font("SansSerif", Font.PLAIN, 16));
     }
 
     public MenuButton(String text, boolean subMenu) {

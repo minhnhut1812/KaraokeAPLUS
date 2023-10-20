@@ -13,7 +13,8 @@ import gui.form.Form_QuanLyKhachHang;
 import gui.form.Form_QuanLyNhanVien;
 import gui.form.Form_QuanLyPhongHat;
 import gui.form.Form_Setting;
-import gui.form.Form_ThongKe;
+import gui.form.Form_ThongKeDoanhThu;
+import gui.form.Form_ThongKeMatHang;
 
 /**
  *
@@ -68,11 +69,14 @@ public class Main extends javax.swing.JFrame {
                         main.showForm(new Form_QuanLyNhanVien());
                     }
                 }else if(menuIndex ==6){
-                    if(subMenuIndex==-1){
-                        main.showForm(new Form_ThongKe());
+                    if(subMenuIndex==-1 || subMenuIndex == 0){
+                        main.showForm(new Form_ThongKeMatHang());
+                    }else if (subMenuIndex == 1) {
+                        main.showForm(new Form_ThongKeDoanhThu());
                     }
+                    
                 }else if(menuIndex ==7){
-                    if(subMenuIndex==-1){
+                    if(subMenuIndex==-1 ){
                         main.showForm(new Form_Setting());
                     }
                 }
