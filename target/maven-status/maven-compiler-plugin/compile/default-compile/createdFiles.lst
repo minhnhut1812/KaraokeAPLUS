@@ -12,6 +12,7 @@ gui\Application.class
 gui\event\EventMenu.class
 gui\swing\MenuButton$2.class
 gui\component\Menu.class
+gui\component\Menu$2.class
 gui\swing\Button.class
 gui\form\Form_MatHang.class
 gui\swing\scrollbar\ModernScrollBarUI$ScrollBarButton.class
