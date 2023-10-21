@@ -97,8 +97,8 @@ public class Menu extends javax.swing.JPanel {
         panelItem = new javax.swing.JPanel();
         panelSetting = new javax.swing.JPanel();
         panelPopUpMenu = new javax.swing.JPanel();
-        button1 = new gui.swing.Button();
-        jLabel1 = new javax.swing.JLabel();
+        btnMenu = new gui.swing.Button();
+        lblTitle = new javax.swing.JLabel();
 
         Menu.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -148,16 +148,16 @@ public class Menu extends javax.swing.JPanel {
 
         panelPopUpMenu.setOpaque(false);
 
-        button1.setBackground(new java.awt.Color(0, 136, 169));
-        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Menu_1.png"))); // NOI18N
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setBackground(new java.awt.Color(0, 136, 169));
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Menu_1.png"))); // NOI18N
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 17)); // NOI18N
-        jLabel1.setText("KARAOKE APLUS");
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 3, 17)); // NOI18N
+        lblTitle.setText("KARAOKE APLUS");
 
         javax.swing.GroupLayout panelPopUpMenuLayout = new javax.swing.GroupLayout(panelPopUpMenu);
         panelPopUpMenu.setLayout(panelPopUpMenuLayout);
@@ -165,9 +165,9 @@ public class Menu extends javax.swing.JPanel {
             panelPopUpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPopUpMenuLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelPopUpMenuLayout.setVerticalGroup(
@@ -175,8 +175,8 @@ public class Menu extends javax.swing.JPanel {
             .addGroup(panelPopUpMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPopUpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -184,8 +184,8 @@ public class Menu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelItem, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-            .addComponent(panelSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(panelItem, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+            .addComponent(panelSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
             .addComponent(panelPopUpMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -199,9 +199,9 @@ public class Menu extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -219,8 +219,8 @@ public class Menu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
-    private gui.swing.Button button1;
-    private javax.swing.JLabel jLabel1;
+    private gui.swing.Button btnMenu;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel panelItem;
     private javax.swing.JPanel panelPopUpMenu;
     private javax.swing.JPanel panelSetting;
