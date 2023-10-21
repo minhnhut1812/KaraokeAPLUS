@@ -102,7 +102,6 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Karaoke APLUS");
-        setPreferredSize(new java.awt.Dimension(1090, 635));
 
         bg.setOpaque(true);
 

@@ -7,10 +7,12 @@ gui\form\Form_Home.class
 gui\form\Form_QuanLyPhongHat.class
 gui\swing\scrollbar\ModernScrollBarUI.class
 gui\form\MainForm.class
+gui\swing\Button$2.class
 gui\Application.class
 gui\event\EventMenu.class
 gui\swing\MenuButton$2.class
 gui\component\Menu.class
+gui\swing\Button.class
 gui\form\Form_MatHang.class
 gui\swing\scrollbar\ModernScrollBarUI$ScrollBarButton.class
 gui\swing\MenuItem.class
@@ -29,5 +31,6 @@ gui\form\Form_QuanLyKhachHang.class
 gui\swing\MenuAnimation$1.class
 gui\swing\MenuItem$2.class
 gui\main\Main.class
+gui\swing\Button$1.class
 gui\swing\MenuButton$1.class
 gui\main\Main$2.class
